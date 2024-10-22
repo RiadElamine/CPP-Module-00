@@ -7,7 +7,7 @@ SOURCE = Contact.cpp \
 
 OBJECT = $(SOURCE:.cpp=.o)
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 %.o: %.cpp
 	c++ $(CFLAGS) -c $< -o $@
