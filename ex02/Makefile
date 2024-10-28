@@ -1,14 +1,11 @@
+NAME = tests
 
-NAME = PhoneBook
-
-SOURCE = Contact.cpp \
-		 main.cpp \
-		 PhoneBook.cpp
+SOURCE = Account.cpp \
+		 tests.cpp
 
 OBJECT = $(SOURCE:.cpp=.o)
 
-HEARDER = Contact.hpp \
-		  PhoneBook.hpp
+HEARDER = Account.hpp 
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 

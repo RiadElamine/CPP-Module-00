@@ -1,18 +1,13 @@
 
-NAME = PhoneBook
+NAME = Megaphone
 
-SOURCE = Contact.cpp \
-		 main.cpp \
-		 PhoneBook.cpp
+SOURCE = megaphone.cpp
 
 OBJECT = $(SOURCE:.cpp=.o)
 
-HEARDER = Contact.hpp \
-		  PhoneBook.hpp
-
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-%.o: %.cpp $(HEARDER)
+%.o: %.cpp
 	c++ $(CFLAGS) -c $< -o $@
 
 all: $(OBJECT)

@@ -6,12 +6,11 @@
 /*   By: relamine <relamine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:49:22 by relamine          #+#    #+#             */
-/*   Updated: 2024/10/22 23:56:20 by relamine         ###   ########.fr       */
+/*   Updated: 2024/10/24 19:14:03 by relamine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-
 
 PhoneBook::PhoneBook()
 {
@@ -36,7 +35,22 @@ int isonly_whitespace(std::string str)
 	return (1);
 }
 
-std::string PhoneBook::set_attribute(std::string attribute)
+int	is_number(std::string attribute, std::string value)
+{
+	if (attribute ==  "PhoneNumber")
+	{
+		if (value.length() != 10)
+			return (1);
+		for (size_t i = 0; i < value.length(); i++)
+		{
+			if (!isdigit(value[i]))
+				return (1);
+		}
+	}
+	return (0);
+}
+
+std::string set_attribute(std::string attribute)
 {
 	std::string value;
 
@@ -46,7 +60,7 @@ std::string PhoneBook::set_attribute(std::string attribute)
 		std::getline(std::cin, value);
 		if(std::cin.eof())
 			exit(0);
-		if (value.empty() || isonly_whitespace(value))
+		if (value.empty() || isonly_whitespace(value) || is_number(attribute, value))
 			continue;
 		return (value);
 	}
@@ -101,7 +115,6 @@ void PhoneBook::Display_InfoByIndex()
 		if(str.empty() || !isdigit(str[0]))
 			continue;
 		index = atoi(str.c_str());
-		std::cout << index << std::endl;
 		if (index > 7 || (index < 8 && str.length() > 1) || contact[index].getFirstName().empty())
 			continue ;
 		std::cout << "First Name: " << contact[index].getFirstName() << std::endl;
@@ -117,7 +130,7 @@ void PhoneBook::Search()
 {
 	if (contact[0].getFirstName().empty())
 	{
-		std::cout << "contact is empty" << std::endl;
+		std::cout << "Contacts are empty" << std::endl;
 		return ;		
 	}
 	std::cout << "|  Index   |" << "First Name|" << " Last Name|" << " Nickname |" << std::endl;
