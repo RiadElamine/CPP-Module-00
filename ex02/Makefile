@@ -12,7 +12,9 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 %.o: %.cpp $(HEARDER)
 	c++ $(CFLAGS) -c $< -o $@
 
-all: $(OBJECT)
+all: $(NAME)
+
+$(NAME): $(OBJECT)
 	c++ $(CFLAGS) $(OBJECT) -o $(NAME)
 
 clean:
