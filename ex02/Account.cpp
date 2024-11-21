@@ -138,3 +138,5 @@ Account::~Account( void )
 		<< ";amount:" << this->_amount
 		<< ";closed" << std::endl;
 }
+
+Account::Account( void ){}
