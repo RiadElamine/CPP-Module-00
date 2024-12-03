@@ -6,7 +6,7 @@
 /*   By: relamine <relamine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:49:22 by relamine          #+#    #+#             */
-/*   Updated: 2024/11/04 17:32:27 by relamine         ###   ########.fr       */
+/*   Updated: 2024/12/03 16:18:01 by relamine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,18 @@ PhoneBook::PhoneBook()
 
 int isonly_whitespace(std::string str)
 {
+	int j;
+
+	j = 0;
 	for (size_t i = 0; i < str.length(); i++)
 	{
-		if (!isspace(str[i]))
-			return (0);
+		if (!isprint(str[i]))
+			return (1);
+		if (!iswspace(str[i]))
+			j = 1;
 	}
+	if (j == 1)
+		return (0);
 	return (1);
 }
 
